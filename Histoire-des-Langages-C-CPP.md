@@ -147,11 +147,9 @@ Astuce : imagine que chaque langage a un **âge** ; range-les comme une classe d
 | [C Programming for Everybody](https://www.coursera.org/specializations/c-programming-for-everybody) | Le tronc : Assembly → **C** | Syntaxe procédurale, pointeurs, mémoire, gestion bas niveau, héritage direct d'Unix |
 | [Coding for Everyone: C and C++](https://www.coursera.org/specializations/coding-for-everyone) | Le tronc **C → C++** | Ajout de la programmation orientée objet (classes, héritage) — le même saut historique que Stroustrup en 1980 |
 
-Autrement dit : en suivant ces deux formations dans l'ordre, tu rejoues **exactement** l'histoire réelle du langage (1972 → 1980).
-
 ---
 
-## 📝 Fiches flash (à réviser en Obsidian avec un plugin spaced repetition)
+## 📝 Fiches flash
 
 - Q: Qui a créé C et pourquoi ? → R: Dennis Ritchie, en 1972 à Bell Labs, pour réécrire Unix de façon portable.
 - Q: Pourquoi Java et JavaScript n'ont rien à voir malgré leur nom ? → R: Java = James Gosling/Sun (1995, machine virtuelle, objets connectés) ; JavaScript = Brendan Eich/Netscape (1995, script web, rien à voir techniquement — coup marketing.
@@ -163,4 +161,4 @@ Autrement dit : en suivant ces deux formations dans l'ordre, tu rejoues **exacte
 
 ---
 
-*Sources : Wikipedia — History of programming languages ; K&R "The C Programming Language".
+Sources : Wikipedia — History of programming languages ; K&R "The C Programming Language".
