@@ -26,13 +26,13 @@ Pour retenir **l'ordre chronologique de la lignée principale** :
 
 (Elle ne respecte pas l'ordre exact des dates à 100%, mais elle relie les 9 langages piliers dans un seul ordre de "parenté" — répète-la 3 fois, elle reste.)
 
-### Mnémotechnique pour le camp "scripting / interprété" (rouge sur le tableau)
+### Mnémotechnique pour le camp "scripting / interprété" 
 > **"B**on **P**erl **P**arle **P**ython"** → **b**ash (79) → **p**erl (87) → **p**hp (95) → **p**ython (91)
 (Astuce : ce sont les 4 langages "outils du couteau suisse Unix", tous des dérivés indirects de C, tous interprétés.)
 
 ---
 
-## 🗺️ L'arbre visuel (comme sur ton tableau noir)
+## 🗺️ L'arbre visuel
 
 ```mermaid
 graph LR
@@ -55,7 +55,7 @@ graph LR
 
 ---
 
-## 📅 Table chronologique complète (les deux tableaux fusionnés)
+## 📅 Table chronologique complète 
 
 | Langage | Année | Créateur | Lieu | Pourquoi (le "besoin") |
 |---|---|---|---|---|
@@ -140,7 +140,7 @@ Astuce : imagine que chaque langage a un **âge** ; range-les comme une classe d
 
 ---
 
-## 🎓 Lien avec tes deux formations Coursera
+## 🎓 Lien avec les deux formations
 
 | Formation | Ce qu'elle couvre dans l'arbre | Notion clé |
 |---|---|---|
