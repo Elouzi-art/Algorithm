@@ -5,7 +5,7 @@ Collection of algorithmic and C/C++ implementations, grouped by topic and langua
 ## Structure
 
 ```text
-Algorithm/
+Algorithms/
 ├── README.md
 ├── cpp/
 │   ├── Dijkstra_Algorithme.cpp
@@ -17,7 +17,8 @@ Algorithm/
 │   └── Histoire-des-Langages-C-CPP.md
 ├── assets/
 │   └── Polynome_root.zip
-└── LICENSE
+├── LICENSE
+└── ...
 ```
 
 ## Contents
