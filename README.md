@@ -5,18 +5,18 @@ Collection of algorithmic and C/C++ implementations, grouped by topic and langua
 ## Structure
 
 ```text
-Algorithms/
+Algorithm/
+├── README.md
 ├── cpp/
 │   ├── Dijkstra_Algorithme.cpp
 │   ├── Hex.cpp
-│   ├── k-means.c
+│   ├── kmeans.c
 │   ├── monte_hax.cpp
 │   └── ...
 ├── docs/
 │   └── Histoire-des-Langages-C-CPP.md
 ├── assets/
 │   └── Polynome_root.zip
-├── README.md
 └── LICENSE
 ```
 
