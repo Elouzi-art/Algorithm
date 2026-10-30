@@ -1,164 +1,373 @@
----
-tags:
-  - programmation
-  - C
-  - Cpp
-  - histoire-info
-  - revision
-sources:
-  - C Programming for Everybody 
-  - "Coding for Everyone: C and C++ "
-  -  Wikipedia
-date: 2026-07-02
-Auteur: Elouzi
----
+# Histoire des langages de programmation : fiche de révision
 
+> Auteur : Elouzi · Date : 2026-07-02
+> Sujets : C, C++, histoire de l'informatique
+> Sources : *C Programming for Everybody*, *Coding for Everyone: C and C++* (Coursera), Wikipedia (History of programming languages), K&R *The C Programming Language*
 
----
+## Sommaire
 
-## 🧠 La phrase mnémotechnique maîtresse
-
-Pour retenir **l'ordre chronologique de la lignée principale** :
-
-> **"F**ranck **A**dore **C**oder **C++**omme **O**bjectif **J**ava, **P**uis **C#**hoisit **J**avaScript"**
-
-`F`ORTRAN → `A`ssembly → `C` → `C++` → `O`bjective-C → `J`ava → `P`HP → `C#` → `J`avaScript
-
-(Elle ne respecte pas l'ordre exact des dates à 100%, mais elle relie les 9 langages piliers dans un seul ordre de "parenté" — répète-la 3 fois, elle reste.)
-
-### Mnémotechnique pour le camp "scripting / interprété" 
-> **"B**on **P**erl **P**arle **P**ython"** → **b**ash (79) → **p**erl (87) → **p**hp (95) → **p**ython (91)
-(Astuce : ce sont les 4 langages "outils du couteau suisse Unix", tous des dérivés indirects de C, tous interprétés.)
+1. [Mnémotechniques](#1-mnémotechniques)
+2. [Arbre de filiation](#2-arbre-de-filiation)
+3. [Chronologie](#3-chronologie)
+4. [Familles de langages](#4-familles-de-langages)
+5. [Typage et POO (Stroustrup)](#5-typage-et-poo-stroustrup)
+6. [Unix et standards](#6-unix-et-standards)
+7. [Lien avec les formations](#7-lien-avec-les-formations)
+8. [Flashcards](#8-flashcards)
 
 ---
 
-## 🗺️ L'arbre visuel
+## 1. Mnémotechniques
+
+**Ordre chronologique des langages piliers**
+
+> **A**lice **F**ait **C**oder **C**hez **O**range : **J**ava, **J**avaScript, **P**HP, puis **C#**
+
+`A`ssembly → `F`ORTRAN → `C` → `C`++ → `O`bjective-C → `J`ava / `J`avaScript / `P`HP (1995) → `C`#
+
+**Scripting / interprétés (outils Unix)**
+
+> **B**on **P**erl **P**arle **P**ython
+
+bash (1989) → Perl (1987) → PHP (1995) → Python (1991)
+
+Ce sont des langages interprétés, et leurs interpréteurs sont écrits en C. L'ordre de la phrase n'est pas chronologique : elle sert à retenir les 4 noms, pas les dates.
+
+---
+
+## 2. Arbre de filiation
+
+Influences principales (une flèche = "a influencé").
 
 ```mermaid
 graph LR
     ASM[Assembly] --> C["C (1972)"]
-    FORTRAN["FORTRAN (1957)"] -.système.-> C
-    C --> CPP["C++ (1980)"]
-    C --> OBJC["Objective-C (1983)"]
+    ALGOL["ALGOL 60"] --> C
+    SIMULA["Simula 67"] --> CPP["C++ (1980)"]
+    C --> CPP
+    SMALLTALK["Smalltalk (1972)"] --> OBJC["Objective-C (1983)"]
+    C --> OBJC
     CPP --> JAVA["Java (1995)"]
     OBJC --> JAVA
-    CPP --> CSHARP["C# (2000-01)"]
-    JAVA --> CSHARP
+    JAVA --> CSHARP["C# (2000)"]
+    CPP --> CSHARP
+    C --> PERL["Perl (1987)"]
+    PERL --> PHP["PHP (1995)"]
+    C --> PHP
     C --> JS["JavaScript (1995)"]
-    C --> BASH["bash (1979/89)"]
-    C --> PERL["perl (1987)"]
-    C --> PHP["php (1995)"]
-    C --> PYTHON["python (1991)"]
-    BASH --> PYTHON
-    PERL --> PHP
+    JAVA -.syntaxe.-> JS
+    C --> PYTHON["Python (1991)"]
 ```
 
+Simplification : C descend en réalité de BCPL → B → C. Python vient surtout du langage ABC, avec des idées de C et de Lisp.
+
 ---
 
-## 📅 Table chronologique complète 
+## 3. Chronologie
 
-| Langage | Année | Créateur | Lieu | Pourquoi (le "besoin") |
+| Langage | Année | Créateur | Lieu | Besoin |
 |---|---|---|---|---|
-| **Assembly** | ~1949 | (collectif, IBM/labs) | USA/UK | Parler directement au processeur, remplacer le binaire pur |
-| **FORTRAN** | 1957 | John Backus | IBM, USA | Calcul scientifique (**Scien**ce **Calc**ulations — d'où le titre vert sur ton image) |
-| **LISP** | 1958 (souvent 1960) | John McCarthy | MIT, USA | Intelligence artificielle, traitement symbolique |
-| **ALGOL 60** | 1960 | Comité international | Europe/USA | Langage "algorithmique" universel, ancêtre théorique de C, Pascal, Java |
-| **Simula 67** | 1967 | Dahl & Nygaard | Norvège | Premier langage à objets (classes, héritage) |
-| **Pascal** | 1970 | Niklaus Wirth | ETH Zurich, Suisse | Enseigner la programmation structurée |
-| **Smalltalk** | 1971-72 | Alan Kay | Xerox PARC, USA | Concrétiser le tout-objet + interface graphique |
-| **C** | 1972 | Dennis Ritchie (avec Ken Thompson) | Bell Labs, USA | Réécrire **Unix** pour qu'il devienne portable |
-| **Scheme** | 1975 | Sussman & Steele | MIT, USA | Simplifier LISP, sémantique minimaliste |
-| **bash** | 1977 (sh) / 1989 (bash) | Stephen Bourne / Brian Fox | Bell Labs → GNU/FSF | Interface shell pour piloter Unix |
-| **C++** | 1980 (publié 1985) | Bjarne Stroustrup | Bell Labs, USA | Ajouter les **classes** à C sans perdre la vitesse ("C with Classes") |
-| **Objective-C** | 1983 | Brad Cox & Tom Love | USA | Fusionner Smalltalk (objets) + C (perf) → deviendra le langage NeXT/Apple |
-| **Perl** | 1987 | Larry Wall | USA | Traitement de texte et rapports système Unix |
-| **Python** | 1991 | Guido van Rossum | CWI, Pays-Bas | Lisibilité et simplicité, "pseudo-code exécutable" |
-| **Java** | 1995 | James Gosling | Sun Microsystems, USA | "Write Once, Run Anywhere" pour objets connectés/TV interactive |
-| **JavaScript** | 1995 | Brendan Eich | Netscape, USA | Rendre les pages web interactives (écrit en **10 jours !**) |
-| **PHP** | 1995 | Rasmus Lerdorf | USA | Suivre les visites de sa page perso ("Personal Home Page") |
-| **C#** | 2000-2001 | Anders Hejlsberg | Microsoft, USA | Concurrent direct de Java pour la plateforme .NET |
+| Assembly | ~1949 | Travaux collectifs | USA / UK | Parler au processeur sans écrire du binaire pur |
+| FORTRAN | 1957 | John Backus | IBM, USA | Calcul scientifique (*FORmula TRANslation*) |
+| LISP | 1958 | John McCarthy | MIT, USA | IA, traitement symbolique |
+| ALGOL 60 | 1960 | Comité international | Europe / USA | Langage algorithmique universel (ancêtre de C, Pascal, Java) |
+| Simula 67 | 1967 | Dahl & Nygaard | Norvège | Premier langage à objets (classes, héritage) |
+| Pascal | 1970 | Niklaus Wirth | ETH Zurich | Enseigner la programmation structurée |
+| Smalltalk | 1971-72 | Alan Kay | Xerox PARC | Tout-objet et interface graphique |
+| **C** | **1972** | **Dennis Ritchie** (avec Ken Thompson) | Bell Labs | **Réécrire Unix** pour le rendre portable |
+| Scheme | 1975 | Sussman & Steele | MIT | Simplifier LISP |
+| sh / bash | 1977 / 1989 | Stephen Bourne / Brian Fox | Bell Labs / GNU | Shell pour piloter Unix |
+| **C++** | **1980** (publié 1985) | **Bjarne Stroustrup** | Bell Labs | Ajouter les classes à C ("C with Classes") |
+| Objective-C | 1983 | Brad Cox & Tom Love | USA | Smalltalk (objets) + C (performance). Utilisé ensuite par NeXT puis Apple |
+| Perl | 1987 | Larry Wall | USA | Traitement de texte et rapports système |
+| Python | 1991 | Guido van Rossum | CWI, Pays-Bas | Lisibilité, simplicité |
+| Java | 1995 | James Gosling | Sun, USA | "Write Once, Run Anywhere" |
+| JavaScript | 1995 | Brendan Eich | Netscape, USA | Pages web interactives (prototype en 10 jours) |
+| PHP | 1995 (premiers scripts en 1994) | Rasmus Lerdorf | USA | Suivre les visites de sa page perso (*Personal Home Page*) |
+| C# | 2000 (publié 2002) | Anders Hejlsberg | Microsoft, USA | Concurrent de Java sur la plateforme .NET |
+
+**Les trois de 1995 : Java, JavaScript, PHP.** Trois langages sans rapport technique : Java (objets, VM), JavaScript (web côté client), PHP (web côté serveur). Java et JavaScript ne partagent qu'un nom marketing.
+
+**Bell Labs (AT&T, New Jersey)** : Unix, C, C++, sh y sont nés.
 
 ---
 
-## 🔑 Mnémotechniques par famille
+## 4. Familles de langages
 
-### 1. La famille "C-like syntaxe accolades { }"
-> Note en rouge sur ton image : **"C uses curly braces {} for code blocks."**
-> Astuce : tous les langages qui utilisent `{ }` (C, C++, Objective-C, Java, C#, JavaScript, PHP) sont des **enfants syntaxiques de C**. Python et bash, eux, utilisent l'indentation → ce sont les "rebelles" de la famille.
+**Syntaxe à accolades `{ }`** : C, C++, Objective-C, Java, C#, JavaScript, PHP. Python (indentation) et bash (mots-clés `do/done`, `fi`) sont à part.
 
-### 2. Retenir les dates à deux chiffres (technique du "âge du langage")
-Astuce : imagine que chaque langage a un **âge** ; range-les comme une classe d'école, du plus vieux au plus jeune :
-- FORTRAN (55) → le grand-père
-- LISP (58-60) → le philosophe
-- C (72) → le père de famille (celui qui a tout réécrit : **Unix**)
-- Objective-C (83) → le cousin discret qui deviendra célèbre plus tard (Apple)
-- C++ (80) → le grand frère sérieux
-- Perl (87) → l'oncle bricoleur de scripts
-- Python (91) → la sœur qui simplifie tout
-- Java (95) / JavaScript (95) / PHP (95) → **les triplés de 1995** (facile à retenir : la même année, trois langages totalement différents naissent : un pour les objets connectés, un pour le web côté client, un pour le web côté serveur)
-- C# (00-01) → le petit dernier, copie/amélioration de Java chez Microsoft
+**Procédural → objet**
 
-### 3. Mnémotechnique "3 frères de 95"
-> **J**ava, **J**avaScript, p**H**p → **"J-J-H de 95"** (Gosling, Eich, Lerdorf — à ne jamais confondre : Java ≠ JavaScript, ils n'ont **aucun lien technique**, seulement un an de naissance et un nom marketing commun !)
+- Procédural : FORTRAN, C, Pascal
+- Objet : Simula → Smalltalk → C++ / Objective-C → Java → C#
 
-### 4. Mnémotechnique "Bell Labs = la maternité"
-> **C, C++, bash (sh), Unix** naissent tous au **même endroit : Bell Labs (AT&T), New Jersey, USA.**
-> Phrase : *"Chez Bell, on a fait Naître Unix, Coder en C, puis Compter en C++."*
+**Compilé vs interprété**
+
+- Compilés : C, C++, Objective-C, Pascal, FORTRAN
+- Compilés vers bytecode puis VM : Java, C#
+- Interprétés : Python, Perl, PHP, bash, JavaScript
 
 ---
 
-## 💡 Pourquoi le typage et le POO ont été inventés (Stroustrup)
+## 5. Typage et POO (Stroustrup)
 
-- **Le typage est l'ami du compilateur.** Stroustrup répète souvent cette idée : un typage fort (comme en C/C++) permet au compilateur de détecter les erreurs *avant* l'exécution, d'optimiser le code, et de documenter l'intention du programmeur. C'est l'opposé du typage dynamique de Python, où les erreurs de type ne sont vues qu'à l'exécution.
-  > Mnémotechnique : **"Le compilateur est un ami sévère : plus tu lui donnes de types, plus il te protège tôt."**
+- **Typage fort et statique.** Le compilateur détecte les erreurs avant l'exécution, optimise mieux, et le code documente l'intention. À l'opposé, Python (typage dynamique) ne voit les erreurs de type qu'à l'exécution.
+- **POO ajoutée à C par pragmatisme.** Regrouper données et fonctions dans une `class` évite de répéter les mêmes structures et appels. Moins de code, moins d'erreurs, plus de réutilisation.
+- **Lignée des objets : Simula 67 → C++ → Java / Python.** L'instance courante s'appelle `this` en C++ et `self` en Python.
 
-- **Le POO (OOP) a été ajouté à C pour réduire l'écriture.** Le but de Stroustrup en créant "C with Classes" (C++) n'était pas juste philosophique, c'était **pragmatique**. Regrouper données + fonctions dans une `class` évite de réécrire sans cesse les mêmes structures et les mêmes appels de fonctions dispersés. Une classe encapsule l'état et le comportement → moins de code répété, moins d'erreurs, plus de réutilisation.
-  > Mnémotechnique : **"POO = Paresse Organisée et Optimisée"** (on organise le code pour écrire moins, pas plus).
+```python
+class Chaine:
+    def __init__(self, texte):
+        self.texte = texte
+```
 
-- **C++ est le grand-père du `class` / `self` que tu retrouves en Python.** Quand tu écris en Python :
-  ```python
-  class Chaine:
-      def __init__(self, texte):
-          self.texte = texte
-  ```
-  Le `class`, la méthode liée à l'instance, et le paramètre `self` (équivalent du `this` implicite en C++) descendent **directement** de l'invention du POO sur C par Stroustrup en 1980. Python n'a fait qu'hériter et simplifier une idée déjà posée par C++ (elle-même héritée de Simula 67).
-  > Fil de parenté : **Simula 67 (objets) → C++ (POO sur C, `this`) → Python (POO simplifié, `self`)**
+En C++, `this` est implicite. En Python, `self` est explicite : c'est le premier paramètre de chaque méthode.
+
+### Exemple : construire un objet en C, C++ et Python
+
+Même objet (une chaîne qui s'affiche) dans les trois langages.
+
+**C** : pas de classe. On simule un objet avec une `struct` et des fonctions qui prennent un pointeur.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char *texte;
+} Chaine;
+
+Chaine *chaine_new(const char *texte) {      // "constructeur"
+    Chaine *c = malloc(sizeof *c);
+    c->texte = strdup(texte);
+    return c;
+}
+
+void chaine_print(const Chaine *c) {         // "méthode"
+    printf("%s\n", c->texte);
+}
+
+void chaine_free(Chaine *c) {                // "destructeur" (manuel)
+    free(c->texte);
+    free(c);
+}
+
+int main(void) {
+    Chaine *c = chaine_new("Bonjour");
+    chaine_print(c);
+    chaine_free(c);
+    return 0;
+}
+```
+
+**C++** : `class` avec constructeur, méthode et destructeur automatique.
+
+```cpp
+#include <iostream>
+#include <string>
+
+class Chaine {
+    std::string texte;
+public:
+    Chaine(std::string t) : texte(std::move(t)) {}   // constructeur
+    void afficher() const { std::cout << texte << "\n"; }
+};
+
+int main() {
+    Chaine c("Bonjour");   // objet créé, détruit automatiquement en fin de portée
+    c.afficher();
+}
+```
+
+**Python** : même idée, avec `self` explicite et mémoire gérée par le ramasse-miettes.
+
+```python
+class Chaine:
+    def __init__(self, texte):
+        self.texte = texte
+
+    def afficher(self):
+        print(self.texte)
+
+c = Chaine("Bonjour")
+c.afficher()
+```
+
+| | C | C++ | Python |
+|---|---|---|---|
+| Objet | `struct` + fonctions | `class` | `class` |
+| Création | `malloc` à la main | constructeur | `__init__` |
+| Libération | `free` à la main | destructeur automatique | ramasse-miettes |
+| Instance courante | pointeur passé en argument | `this` (implicite) | `self` (explicite) |
+
+Lien avec l'arbre : l'interpréteur Python standard (CPython) est écrit en C. Chaque objet Python est en réalité une `struct` C (`PyObject`) manipulée par des fonctions, exactement comme dans l'exemple C ci-dessus.
+
+### Écrire du Python avec du C : créer un type d'objet Python en C
+
+Python peut être étendu en C : on écrit un module en C qui définit un nouvel objet utilisable depuis Python. C'est comme cela que sont faits `list`, `dict`, `str`, ou des bibliothèques comme NumPy.
+
+**`chainemodule.c`** : le type `Chaine`, défini en C.
+
+```c
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
+
+/* L'objet : PyObject_HEAD (compteur de références + type) + nos données */
+typedef struct {
+    PyObject_HEAD
+    PyObject *texte;
+} ChaineObject;
+
+/* __init__ */
+static int Chaine_init(ChaineObject *self, PyObject *args, PyObject *kwds) {
+    PyObject *texte;
+    if (!PyArg_ParseTuple(args, "U", &texte))   /* "U" = une str Python */
+        return -1;
+    Py_INCREF(texte);
+    Py_XSETREF(self->texte, texte);
+    return 0;
+}
+
+/* destructeur : appelé quand le compteur de références tombe à 0 */
+static void Chaine_dealloc(ChaineObject *self) {
+    Py_XDECREF(self->texte);
+    Py_TYPE(self)->tp_free((PyObject *)self);
+}
+
+/* méthode afficher() */
+static PyObject *Chaine_afficher(ChaineObject *self, PyObject *Py_UNUSED(ignored)) {
+    if (self->texte == NULL) {
+        PyErr_SetString(PyExc_AttributeError, "texte");
+        return NULL;
+    }
+    printf("%s\n", PyUnicode_AsUTF8(self->texte));
+    Py_RETURN_NONE;
+}
+
+static PyMethodDef Chaine_methods[] = {
+    {"afficher", (PyCFunction)Chaine_afficher, METH_NOARGS, "Affiche le texte"},
+    {NULL}
+};
+
+/* la "classe" : un PyTypeObject */
+static PyTypeObject ChaineType = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    .tp_name      = "chaine.Chaine",
+    .tp_basicsize = sizeof(ChaineObject),
+    .tp_flags     = Py_TPFLAGS_DEFAULT,
+    .tp_new       = PyType_GenericNew,
+    .tp_init      = (initproc)Chaine_init,
+    .tp_dealloc   = (destructor)Chaine_dealloc,
+    .tp_methods   = Chaine_methods,
+};
+
+static PyModuleDef chainemodule = {
+    PyModuleDef_HEAD_INIT,
+    .m_name = "chaine",
+    .m_size = -1,
+};
+
+PyMODINIT_FUNC PyInit_chaine(void) {
+    if (PyType_Ready(&ChaineType) < 0)
+        return NULL;
+    PyObject *m = PyModule_Create(&chainemodule);
+    if (m == NULL)
+        return NULL;
+    Py_INCREF(&ChaineType);
+    if (PyModule_AddObject(m, "Chaine", (PyObject *)&ChaineType) < 0) {
+        Py_DECREF(&ChaineType);
+        Py_DECREF(m);
+        return NULL;
+    }
+    return m;
+}
+```
+
+**`setup.py`** : compilation du module.
+
+```python
+from setuptools import setup, Extension
+
+setup(
+    name="chaine",
+    ext_modules=[Extension("chaine", ["chainemodule.c"])],
+)
+```
+
+**Compiler et utiliser** (il faut les en-têtes Python, par exemple `python3-dev` sous Debian/Ubuntu) :
+
+```bash
+python setup.py build_ext --inplace
+```
+
+```python
+import chaine
+
+c = chaine.Chaine("Bonjour")   # objet créé en C
+c.afficher()                   # Bonjour
+```
+
+Correspondance avec la classe Python équivalente :
+
+| Python pur | Extension en C |
+|---|---|
+| `class Chaine` | `PyTypeObject ChaineType` |
+| attributs (`self.texte`) | champs de la `struct ChaineObject` |
+| `__init__` | `tp_init` |
+| méthode `afficher` | entrée dans `PyMethodDef` |
+| ramasse-miettes | `tp_dealloc` + `Py_INCREF` / `Py_DECREF` (comptage de références) |
 
 ---
 
-## 🐧 Unix et les standards — le fil conducteur
+## 6. Unix et standards
 
-- **1969** : Unix est créé par Ken Thompson et Dennis Ritchie chez **Bell Labs**, d'abord en Assembly.
-- **1972** : Ritchie invente **C** précisément pour **réécrire Unix** et le rendre portable sur d'autres machines → c'est LE moment charnière de ton tableau ("System" écrit en vert entre Assembly/FORTRAN et C).
-- **K&R C (1978)** : le livre de Kernighan & Ritchie devient la référence de facto.
-- **ANSI C / C89 (1989)** puis **ISO C90, C99, C11, C17, C23** : les standards qui unifient les compilateurs.
-- **Shell Unix (sh, 1977)** puis **bash (1989, projet GNU)** : l'interface en ligne de commande pour piloter le système — écrite elle-même en C.
-- **POSIX (1988)** : la norme qui garantit qu'un programme C/Unix tourne pareil sur différents systèmes (Linux, BSD, macOS...).
+| Date | Événement |
+|---|---|
+| 1969 | Unix créé par Thompson et Ritchie (Bell Labs), d'abord en Assembly |
+| 1972 | C créé pour réécrire Unix et le rendre portable |
+| 1977 | Shell Bourne (sh) |
+| 1978 | *The C Programming Language* (K&R) : référence de fait |
+| 1988 | POSIX : norme de portabilité Unix (Linux, BSD, macOS...) |
+| 1989 | ANSI C (C89) et bash |
+| 1990 | ISO C90 |
+| Ensuite | C99, C11, C17, C23 |
 
-> Mnémotechnique : **"Unix a accouché de C, C a accouché de tout le reste."**
-> C'est la phrase à retenir pour comprendre pourquoi *C Programming for Everybody* (le cours 100% C) est le socle indispensable avant *Coding for Everyone: C and C++* (qui ajoute la couche objets).
+> **Unix a donné naissance à C, et C a donné naissance à tout le reste.**
 
 ---
 
-## 🎓 Lien avec les deux formations
+## 7. Lien avec les formations
 
-| Formation | Ce qu'elle couvre dans l'arbre | Notion clé |
+| Formation | Partie de l'arbre | Notions clés |
 |---|---|---|
-| [C Programming for Everybody](https://www.coursera.org/specializations/c-programming-for-everybody) | Le tronc : Assembly → **C** | Syntaxe procédurale, pointeurs, mémoire, gestion bas niveau, héritage direct d'Unix |
-| [Coding for Everyone: C and C++](https://www.coursera.org/specializations/coding-for-everyone) | Le tronc **C → C++** | Ajout de la programmation orientée objet (classes, héritage) — le même saut historique que Stroustrup en 1980 |
+| [C Programming for Everybody](https://www.coursera.org/specializations/c-programming-for-everybody) | Assembly → **C** | Syntaxe procédurale, pointeurs, mémoire, bas niveau |
+| [Coding for Everyone: C and C++](https://www.coursera.org/specializations/coding-for-everyone) | **C → C++** | Programmation orientée objet (classes, héritage) |
 
 ---
 
-## 📝 Fiches flash
+## 8. Flashcards
 
-- Q: Qui a créé C et pourquoi ? → R: Dennis Ritchie, en 1972 à Bell Labs, pour réécrire Unix de façon portable.
-- Q: Pourquoi Java et JavaScript n'ont rien à voir malgré leur nom ? → R: Java = James Gosling/Sun (1995, machine virtuelle, objets connectés) ; JavaScript = Brendan Eich/Netscape (1995, script web, rien à voir techniquement — coup marketing.
-- Q: Quel langage a été écrit en seulement 10 jours ? → R: JavaScript, par Brendan Eich en 1995.
-- Q: Quelle est la triple filiation de C++ ? → R: C (syntaxe/perf) + Simula 67 (objets) = "C with Classes" par Bjarne Stroustrup, 1980.
-- Q: Quel standard garantit la portabilité entre systèmes Unix ? → R: POSIX (1988).
-- Q: D'où vient Objective-C et qui l'a rendu célèbre ? → R: Créé par Brad Cox (1983), rendu célèbre par NeXT puis Apple (macOS/iOS).
-- Q: Quel langage utilise l'indentation au lieu des accolades ? → R: Python (et bash dans une moindre mesure) — contrairement à toute la famille C.
+**Qui a créé C et pourquoi ?**
+Dennis Ritchie, 1972, Bell Labs, pour réécrire Unix de façon portable.
 
----
+**Pourquoi Java et JavaScript n'ont-ils rien à voir ?**
+Java : James Gosling / Sun, 1995, VM, objets. JavaScript : Brendan Eich / Netscape, 1995, script web. Seul le nom est un choix marketing.
 
-Sources : Wikipedia — History of programming languages ; K&R "The C Programming Language".
+**Quel langage a été prototypé en 10 jours ?**
+JavaScript, par Brendan Eich, en 1995.
+
+**D'où vient C++ ?**
+C (syntaxe, performance) + Simula 67 (objets) = "C with Classes", Bjarne Stroustrup, 1980.
+
+**Quel standard garantit la portabilité entre systèmes Unix ?**
+POSIX (1988).
+
+**D'où vient Objective-C ?**
+Brad Cox et Tom Love, 1983 (Smalltalk + C). Popularisé par NeXT puis Apple (macOS / iOS).
+
+**Quel langage utilise l'indentation plutôt que les accolades ?**
+Python.
+
+**Quelle est la différence entre sh et bash ?**
+sh : shell Bourne, 1977, Bell Labs. bash : Brian Fox, 1989, projet GNU.
