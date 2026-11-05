@@ -9,7 +9,9 @@ Algorithm/
 ├── src/
 │   └── cpp/
 │       ├── graphs/
-│       │   └── dijkstra.cpp
+│       │   ├── dijkstra.cpp
+│       │   ├── dfs.cpp
+│       │   └── bfs.cpp
 │       ├── probabilistic_models/
 │       │   └── hidden_markov_model.cpp
 │       ├── image_processing/
@@ -23,13 +25,6 @@ Algorithm/
 │               ├── hex_game.cpp
 │               └── monte_carlo_ai.cpp
 ├── docs/
-│   ├── data_mining/
-│   ├── image_processing/
-│   ├── probabilistic_models/
-│   └── programming_languages/
-├── assets/
-│   └── polynomial_roots/
-│       └── Polynome_root.zip
 ├── LICENSE
 └── README.md
 ```
@@ -39,6 +34,8 @@ Algorithm/
 | Algorithm / project | Domain | Implementation |
 |---|---|---|
 | Dijkstra | Graphs | `src/cpp/graphs/dijkstra.cpp` |
+| Depth-First Search (DFS) | Graphs | `src/cpp/graphs/dfs.cpp` |
+| Breadth-First Search (BFS) | Graphs | `src/cpp/graphs/bfs.cpp` |
 | Hidden Markov Model | Probabilistic models | `src/cpp/probabilistic_models/hidden_markov_model.cpp` |
 | Sobel | Image processing | `src/cpp/image_processing/sobel.cpp` |
 | Apriori | Data mining | `src/cpp/data_mining/apriori.cpp` |
@@ -49,11 +46,7 @@ Algorithm/
 
 ## Build
 
-The examples use standard C++17 unless otherwise specified. Run commands from the repository root.
 
-```bash
-# C++17 algorithms
-g++ -std=c++17 -Wall -Wextra -O2 src/cpp/graphs/dijkstra.cpp -o dijkstra
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/probabilistic_models/hidden_markov_model.cpp -o hmm
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/image_processing/sobel.cpp -o sobel
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/data_mining/apriori.cpp -o apriori
@@ -65,7 +58,7 @@ g++ -std=c++17 -Wall -Wextra -O2 src/cpp/games/hex/monte_carlo_ai.cpp -o hex_ai
 gcc -std=c11 -Wall -Wextra -O2 src/cpp/data_mining/kmeans.c -lm -o kmeans
 ```
 
-Sobel usage:
+DFS and BFS input format is documented in [docs/graphs/README.md](docs/graphs/README.md). Sobel usage:
 
 ```bash
 ./sobel input.pgm edges.pgm 100
@@ -75,16 +68,7 @@ The Sobel implementation currently supports ASCII grayscale PGM (P2) images.
 
 ## Documentation
 
-See [docs/README.md](docs/README.md) for the documentation index. Notes cover the main concepts, assumptions, usage, and complexity where applicable.
 
-## Repository conventions
-
-1. Put source code under `src/<language>/<domain>/`.
-2. Use descriptive, lowercase file names with ASCII characters.
-3. Put algorithm documentation under `docs/<domain>/`.
-4. Put sample inputs under `examples/` and tests under `tests/` when those are added.
-5. Put supporting archives and resources under `assets/<topic>/`.
-6. Update this README and the relevant documentation index when adding a new item.
 
 ## License
 

@@ -2,7 +2,6 @@
 
 Technical notes are grouped by topic:
 
-- [Data mining](data_mining/README.md) — Apriori, DBSCAN, and the existing one-dimensional k-means implementation.
 - [Image processing](image_processing/sobel.md) — Sobel gradient operator and edge detection.
 - [Probabilistic models](probabilistic_models/hidden_markov_model.md) — Hidden Markov Model, Forward, and Viterbi.
 - [Programming languages](programming_languages/c_cpp_history.md) — revision notes on the history of C and C++ and related languages.
