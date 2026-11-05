@@ -16,24 +16,22 @@ Algorithm/
 │       │   └── hidden_markov_model.cpp
 │       ├── image_processing/
 │       │   └── sobel.cpp
-│       └── data_mining/
-│           ├── apriori.cpp
-│           └── dbscan.cpp
+│       ├── data_mining/
+│       │   ├── apriori.cpp
+│       │   ├── dbscan.cpp
+│       │   └── kmeans.c
+│       └── games/
+│           └── hex/
+│               ├── hex_game.cpp
+│               └── monte_carlo_ai.cpp
 ├── docs/
-│   ├── graphs/README.md
-│   ├── probabilistic_models/hidden_markov_model.md
-│   ├── image_processing/sobel.md
-│   └── data_mining/README.md
-├── tests/       (planned)
-├── examples/    (planned)
-├── assets/      (planned)
 ├── LICENSE
 └── README.md
 ```
 
 ## Algorithm index
 
-| Algorithm | Domain | Implementation |
+| Algorithm / project | Domain | Implementation |
 |---|---|---|
 | Dijkstra | Graphs | `src/cpp/graphs/dijkstra.cpp` |
 | Depth-First Search (DFS) | Graphs | `src/cpp/graphs/dfs.cpp` |
@@ -42,18 +40,22 @@ Algorithm/
 | Sobel | Image processing | `src/cpp/image_processing/sobel.cpp` |
 | Apriori | Data mining | `src/cpp/data_mining/apriori.cpp` |
 | DBSCAN | Data mining | `src/cpp/data_mining/dbscan.cpp` |
+| K-means (1D) | Data mining | `src/cpp/data_mining/kmeans.c` |
+| Hex | Game / graph traversal | `src/cpp/games/hex/hex_game.cpp` |
+| Hex Monte Carlo AI | Game AI / Monte Carlo | `src/cpp/games/hex/monte_carlo_ai.cpp` |
 
 ## Build
 
-The current C++ examples use **C++17** and standard-library dependencies only.
 
-```bash
-g++ -std=c++17 -Wall -Wextra -O2 src/cpp/graphs/dfs.cpp -o dfs
-g++ -std=c++17 -Wall -Wextra -O2 src/cpp/graphs/bfs.cpp -o bfs
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/probabilistic_models/hidden_markov_model.cpp -o hmm
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/image_processing/sobel.cpp -o sobel
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/data_mining/apriori.cpp -o apriori
 g++ -std=c++17 -Wall -Wextra -O2 src/cpp/data_mining/dbscan.cpp -o dbscan
+g++ -std=c++17 -Wall -Wextra -O2 src/cpp/games/hex/hex_game.cpp -o hex
+g++ -std=c++17 -Wall -Wextra -O2 src/cpp/games/hex/monte_carlo_ai.cpp -o hex_ai
+
+# C11 implementation (math library)
+gcc -std=c11 -Wall -Wextra -O2 src/cpp/data_mining/kmeans.c -lm -o kmeans
 ```
 
 DFS and BFS input format is documented in [docs/graphs/README.md](docs/graphs/README.md). Sobel usage:
@@ -66,16 +68,7 @@ The Sobel implementation currently supports ASCII grayscale PGM (P2) images.
 
 ## Documentation
 
-See [docs/README.md](docs/README.md) for the documentation index. Each domain page covers the core idea, assumptions, usage, and complexity.
 
-## Contributing
-
-1. Put source code under `src/<language>/<domain>/`.
-2. Use descriptive, lowercase file names.
-3. Add documentation under the matching `docs/<domain>/` directory.
-4. Add sample inputs under `examples/` when required.
-5. Add tests under `tests/` for expected and edge-case behavior.
-6. Update the algorithm index and build instructions in this README.
 
 ## License
 
